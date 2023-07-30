@@ -1,0 +1,9 @@
+#resultBox {
+    border: 2px solid red;
+}
+
+#searchResults {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
