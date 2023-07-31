@@ -10,6 +10,12 @@ form.addEventListener('submit', (event) => {
     let barDiv = document.querySelector('#bar')
     let word = barDiv.value 
 
+    function clear(container) {
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+    }
+
     fetch('https://itunes.apple.com/search?term=' + word, {
         method: 'GET',
         headers: {"Content-Type": "application/json"}
