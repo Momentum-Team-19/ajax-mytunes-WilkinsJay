@@ -1,5 +1,5 @@
 const searchResults = document.querySelector('#searchResults')
-const musicPlayer = document.getElementById('#musicPlayer')
+const musicPlayer = document.getElementById('musicPlayer')
 
 let form = document.querySelector('#searchBox')
 form.addEventListener('submit', (event) => {
@@ -21,11 +21,9 @@ form.addEventListener('submit', (event) => {
     
     .then ((data) => {
         console.log(data.results)
-        
+    
         
         for (let song of data.results) {
-            let songBox = document.createElement('div')
-            songBox.classList.add("songBox")
             let resultBox = document.createElement('div')
             resultBox.id = "resultBox"
             
@@ -37,12 +35,12 @@ form.addEventListener('submit', (event) => {
             songDiv.innerText = song.trackName
             resultBox.append(songDiv)
     
-        
             searchResults.append(resultBox)
-            songBox.addEventListener("click",() =>
-                musicPlayer.src = song.previewURL,
-                musicPlayer.controls = true,
-                musicPlayer.preload = "auto")
+            resultBox.addEventListener("click",() => {
+                musicPlayer.src = song.previewUrl;
+                musicPlayer.preload = "auto";
+                
+            })
         }
     })
 })
