@@ -1,28 +1,48 @@
 const searchResults = document.querySelector('#searchResults')
+const musicPlayer = document.getElementById('#musicPlayer')
 
-fetch('https://itunes.apple.com/search?term=jack+johnson.', {
-    method: 'GET',
-    headers: {"Content-Type": "application/json"}
-})
+let form = document.querySelector('#searchBox')
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-.then((response) => {
-    return response.json()
-})
+    searchResults.innerHTML = ''
 
-.then ((data) => {
-    console.log(data.results)
+    let barDiv = document.querySelector('#bar')
+    let word = barDiv.value 
 
-    for (let song of data.results) {
-        let resultBox = document.createElement('div')
-        resultBox.id = "resultBox"
-        let songDiv = document.createElement('div')
-        songDiv.innerText = song.trackName
-        resultBox.append(songDiv)
-
-        let imageDiv = document.createElement('img')
-        imageDiv.src = song.artworkUrl100
-        resultBox.append(imageDiv)
-
-        searchResults.append(resultBox)
-    }
+    fetch('https://itunes.apple.com/search?term=' + word, {
+        method: 'GET',
+        headers: {"Content-Type": "application/json"}
+    })
+    
+    .then((response) => {
+        return response.json()
+    })
+    
+    .then ((data) => {
+        console.log(data.results)
+        
+        
+        for (let song of data.results) {
+            let songBox = document.createElement('div')
+            songBox.classList.add("songBox")
+            let resultBox = document.createElement('div')
+            resultBox.id = "resultBox"
+            
+            let imageDiv = document.createElement('img')
+            imageDiv.src = song.artworkUrl100
+            resultBox.append(imageDiv)
+            
+            let songDiv = document.createElement('div')
+            songDiv.innerText = song.trackName
+            resultBox.append(songDiv)
+    
+        
+            searchResults.append(resultBox)
+            songBox.addEventListener("click",() =>
+                musicPlayer.src = song.previewURL,
+                musicPlayer.controls = true,
+                musicPlayer.preload = "auto")
+        }
+    })
 })
