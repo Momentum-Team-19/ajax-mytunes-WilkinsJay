@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #resultBox {
     border: 2px solid red;
 }
@@ -6,4 +11,18 @@
     border: 2px solid black;
     display: flex;
     flex-wrap: wrap;
+    border-top: 1px;
+    
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+    width: 100%;
+    text-align: center;
+    padding: 25px;
+}
+
+#searchBox {
+    text-align: center;
 }

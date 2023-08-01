@@ -2,19 +2,20 @@ const searchResults = document.querySelector('#searchResults')
 const musicPlayer = document.getElementById('musicPlayer')
 
 let form = document.querySelector('#searchBox')
+
+function clear(container) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-
-    searchResults.innerHTML = ''
+    clear(searchResults)
 
     let barDiv = document.querySelector('#bar')
     let word = barDiv.value 
 
-    function clear(container) {
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
-        }
-    }
 
     fetch('https://itunes.apple.com/search?term=' + word, {
         method: 'GET',
@@ -44,6 +45,7 @@ form.addEventListener('submit', (event) => {
             searchResults.append(resultBox)
             resultBox.addEventListener("click",() => {
                 musicPlayer.src = song.previewUrl;
+                musicPlayer.controls = true;
                 musicPlayer.preload = "auto";
                 
             })
