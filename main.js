@@ -30,6 +30,7 @@ form.addEventListener('submit', (event) => {
     .then ((data) => {
         console.log(data.results)
 // an empty array is truthy. Acts as if its true
+// if is a conditional
         if (data.results.length === 0) {
             console.log('no results')
             let messageDiv = document.createElement('div')
@@ -37,8 +38,6 @@ form.addEventListener('submit', (event) => {
             searchResults.append(messageDiv)
         }
         else {
-
-            
             
             for (let song of data.results) {
                 let resultBox = document.createElement('div')
@@ -61,5 +60,11 @@ form.addEventListener('submit', (event) => {
                 })
             }
         }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            let errorMessage = document.createElement('div')
+            errorMessage.innerText = "Page could not be loaded"
+            searchResults.append(errorMessage)
         })
     })
