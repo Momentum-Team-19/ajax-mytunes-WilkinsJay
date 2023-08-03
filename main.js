@@ -1,5 +1,11 @@
 const searchResults = document.querySelector('#searchResults')
 const musicPlayer = document.getElementById('musicPlayer')
+const modeSwitch = document.getElementById('modeSwitch')
+
+modeSwitch.addEventListener("click", toggleDarkMode)
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
 
 let form = document.querySelector('#searchBox')
 
@@ -48,6 +54,7 @@ form.addEventListener('submit', (event) => {
                 resultBox.append(imageDiv)
                 
                 let songDiv = document.createElement('div')
+                songDiv.classList.add('songTitle')
                 songDiv.innerText = song.trackName
                 resultBox.append(songDiv)
                 
