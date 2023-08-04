@@ -1,7 +1,7 @@
 const searchResults = document.querySelector('#searchResults')
 const musicPlayer = document.getElementById('musicPlayer')
 const modeSwitch = document.getElementById('modeSwitch')
-
+// Calling on the differnt attributes in HTML
 modeSwitch.addEventListener("click", toggleDarkMode)
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
@@ -22,7 +22,7 @@ form.addEventListener('submit', (event) => {
 
     let barDiv = document.querySelector('#bar')
     let word = barDiv.value 
-
+// allows you to input text inside the bar and search it
 
     fetch('https://itunes.apple.com/search?term=' + word, {
         method: 'GET',
@@ -38,6 +38,7 @@ form.addEventListener('submit', (event) => {
 // an empty array is truthy. Acts as if its true
 // if is a conditional
         if (data.results.length === 0) {
+            // my search results will be 0 of whatever i tried to search
             console.log('no results')
             let messageDiv = document.createElement('div')
             messageDiv.innerText = "No search results found"

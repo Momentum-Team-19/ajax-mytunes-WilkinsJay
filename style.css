@@ -17,7 +17,7 @@ body.dark-mode {
     border: 2px solid black;
     display: flex;
     flex-direction: column;
-    background-color: #ECF8F8;
+    background-color: lightgray;
     width: 20%;
     margin: 10px;
     box-shadow: 3px 3px 5px #00000020, -3px -3px 5px #ffffff;
@@ -28,7 +28,7 @@ body.dark-mode {
 }
 
 #searchResults {
-    border: 2px solid black;
+    border: 2px;
     border-top: 1px;
     display: flex;
     flex-wrap: wrap;
@@ -69,4 +69,8 @@ header {
 
 #musicPlayer {
     margin-top: 15px;
+}
+
+img {
+    margin: 15%;
 }
