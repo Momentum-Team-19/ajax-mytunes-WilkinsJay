@@ -4,8 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="main.js" defer></script>
-  <title>Music Search</title>
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
 </head>
 <body>
+  <header>
+  <h1>Your Tunes</h1>
+  <button id="modeSwitch">Light/Dark</button>
+    <form id="searchBox">
+      <input id="bar" type="text" placeholder="Search for Artist or Song..." required/>
+      <button type="submit">Search</button>
+    </form>
+    <div><audio id="musicPlayer" src=""></audio></div>
+  </header>
+  <div id="searchResults"></div>
 </body>
 </html>
